@@ -44,42 +44,4 @@
     fishPlugins.forgit
   ];
 
-
-  # home.file = {
-  #   # Chillpop service for lowfi since lofigirl's service is down
-  #   ".local/share/lowfi/" = {
-  #     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/lowfi";
-  #     recursive = true;
-  #   };
-
-  #   ".config/ghostty/" = {
-  #     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/ghostty/";
-  #     recursive = true;
-  #   };
-
-  #   ".config/starship.toml" = {
-  #     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/starship.toml";
-  #   };
-
-  #   ".config/kanata/config.kbd" = {
-  #     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/kanata/config.kbd";
-  #   };
-
-  #   ".config/mpv" = {
-  #     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/mpv";
-  #     recursive = true;
-  #   };
-
-  #   ".config/fastfetch" = {
-  #     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/fastfetch";
-  #     recursive = true;
-  #   };
-
-  #   ".config/fish" = {
-  #     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/fish";
-  #     recursive = true;
-  #   };
-
-  # };
-
 }
