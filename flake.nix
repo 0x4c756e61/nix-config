@@ -18,6 +18,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+
   };
 
   outputs =
@@ -26,11 +28,15 @@
       nixpkgs,
       home-manager,
       forgejo-cli,
+      spicetify-nix,
       ...
     }:
     let
       pkgs = import nixpkgs {
         system = "x86_64-linux";
+        config = {
+          allowUnfree = true;
+        };
         overlays = [
           nixgl.overlay
           (final: prev: {
@@ -62,6 +68,7 @@
         extraSpecialArgs = {
           nixgl = nixGLWrapped;
           forgejo-cli = forgejo-cli;
+          spicetify = spicetify-nix;
         };
       };
     };

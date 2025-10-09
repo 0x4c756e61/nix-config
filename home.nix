@@ -3,6 +3,7 @@
   config,
   pkgs,
   forgejo-cli,
+  spicetify,
   ...
 }:
 
@@ -17,6 +18,7 @@
 
   imports = [
     ./dotfiles
+    spicetify.homeManagerModules.default
   ];
 
   home.packages = with pkgs; [
