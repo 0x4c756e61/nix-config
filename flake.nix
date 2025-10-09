@@ -31,7 +31,18 @@
     let
       pkgs = import nixpkgs {
         system = "x86_64-linux";
-        overlays = [ nixgl.overlay ];
+        overlays = [
+          nixgl.overlay
+          (final: prev: {
+            libvdpau-va-gl = prev.libvdpau-va-gl.overrideAttrs (
+              oldAttrs: {
+                cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
+                  "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+                ];
+              }
+            );
+          })
+        ];
       };
     in
     {
@@ -41,6 +52,7 @@
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [ ./home.nix ];
+
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
