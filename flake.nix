@@ -44,6 +44,9 @@
           })
         ];
       };
+      nixGLWrapped = {
+          packages = import nixgl { inherit pkgs; };
+        };
     in
     {
       homeConfigurations."luna" = home-manager.lib.homeManagerConfiguration {
@@ -57,7 +60,7 @@
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
         extraSpecialArgs = {
-          nixgl = nixgl;
+          nixgl = nixGLWrapped;
           forgejo-cli = forgejo-cli;
         };
       };
