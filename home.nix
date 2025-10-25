@@ -15,6 +15,7 @@
   nixGL.packages = nixgl.packages;
   nixGL.defaultWrapper = "mesa";
   targets.genericLinux.enable = true;
+  fonts.fontconfig.enable = true;
 
   imports = [
     ./dotfiles
@@ -27,9 +28,7 @@
     (config.lib.nixGL.wrap dissent)
     (config.lib.nixGL.wrap fractal)
 
-    # Fonts
-    nerd-fonts.fira-code
-
+    maple-mono.NF
     kdePackages.breeze
     prismlauncher
 
