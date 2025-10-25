@@ -39,20 +39,8 @@
         };
         overlays = [
           nixgl.overlay
-          (final: prev: {
-            libvdpau-va-gl = prev.libvdpau-va-gl.overrideAttrs (
-              oldAttrs: {
-                cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
-                  "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
-                ];
-              }
-            );
-          })
         ];
       };
-      nixGLWrapped = {
-          packages = import nixgl { inherit pkgs; };
-        };
     in
     {
       homeConfigurations."luna" = home-manager.lib.homeManagerConfiguration {
@@ -66,7 +54,7 @@
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
         extraSpecialArgs = {
-          nixgl = nixGLWrapped;
+          nixgl = nixgl;
           forgejo-cli = forgejo-cli;
           spicetify = spicetify-nix;
         };
