@@ -3,6 +3,7 @@
   config,
   pkgs,
   forgejo-cli,
+  mangowc,
   spicetify,
   ...
 }:
@@ -18,8 +19,9 @@
   fonts.fontconfig.enable = true;
 
   imports = [
-    ./dotfiles
     spicetify.homeManagerModules.default
+    mangowc.hmModules.mango
+    ./dotfiles
   ];
 
   home.packages = with pkgs; [

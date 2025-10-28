@@ -18,6 +18,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    mangowc = {
+      url = "github:DreamMaoMao/mangowc";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
   };
@@ -28,6 +33,7 @@
       nixpkgs,
       home-manager,
       forgejo-cli,
+      mangowc,
       spicetify-nix,
       ...
     }:
@@ -50,13 +56,13 @@
         # the path to your home.nix.
         modules = [ ./home.nix ];
 
-
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
         extraSpecialArgs = {
           nixgl = nixgl;
           forgejo-cli = forgejo-cli;
           spicetify = spicetify-nix;
+          mangowc = mangowc;
         };
       };
     };
