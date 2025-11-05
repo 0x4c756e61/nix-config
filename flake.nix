@@ -23,8 +23,35 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    awww = {
+      url = "git+https://codeberg.org/LGFae/awww";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    moonlight = {
+      url = "github:moonlight-mod/moonlight";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    vicinae = {
+      url = "github:vicinaehq/vicinae";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake/beta";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -34,7 +61,12 @@
       home-manager,
       forgejo-cli,
       mangowc,
+      quickshell,
+      awww,
       spicetify-nix,
+      moonlight,
+      vicinae,
+      zen-browser,
       ...
     }:
     let
@@ -49,6 +81,7 @@
       };
     in
     {
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-tree;
       homeConfigurations."luna" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
@@ -63,6 +96,11 @@
           forgejo-cli = forgejo-cli;
           spicetify = spicetify-nix;
           mangowc = mangowc;
+          quickshell = quickshell;
+          awww = awww;
+          moonlight = moonlight;
+          vicinae = vicinae;
+          zen-browser = zen-browser;
         };
       };
     };
