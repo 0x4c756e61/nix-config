@@ -17,9 +17,9 @@
   programs.home-manager.enable = true;
 
   # -- nixGL stuff
-  nixGL.packages = nixgl.packages;
-  nixGL.defaultWrapper = "mesa";
-  nixGL.vulkan.enable = true;
+  targets.genericLinux.nixGL.packages = nixgl.packages;
+  targets.genericLinux.nixGL.defaultWrapper = "mesa";
+  targets.genericLinux.nixGL.vulkan.enable = true;
   # --
 
   # -- Config options
