@@ -18,23 +18,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    mangowc = {
-      url = "github:DreamMaoMao/mangowc";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    awww = {
-      url = "git+https://codeberg.org/LGFae/awww";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -60,9 +45,6 @@
       nixpkgs,
       home-manager,
       forgejo-cli,
-      mangowc,
-      quickshell,
-      awww,
       spicetify-nix,
       moonlight,
       vicinae,
@@ -95,9 +77,6 @@
           nixgl = nixgl;
           forgejo-cli = forgejo-cli;
           spicetify = spicetify-nix;
-          mangowc = mangowc;
-          quickshell = quickshell;
-          awww = awww;
           moonlight = moonlight;
           vicinae = vicinae;
           zen-browser = zen-browser;

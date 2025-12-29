@@ -3,7 +3,6 @@
   config,
   pkgs,
   forgejo-cli,
-  mangowc,
   spicetify,
   moonlight,
   vicinae,
@@ -31,7 +30,6 @@
 
   imports = [
     spicetify.homeManagerModules.default
-    mangowc.hmModules.mango
     vicinae.homeManagerModules.default
     zen-browser.homeModules.beta
     ./dotfiles # Submodule containing all my user non-nix configurations (except for spotify lol)
