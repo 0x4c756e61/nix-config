@@ -99,7 +99,10 @@
   # Free and open source Raycast reimplementation
   services.vicinae = {
     enable = true;
-    autoStart = true;
+    systemd = {
+      enable = true;
+      autoStart = true;
+    };
   };
 
   # Automatically set and unset environments when switching directory
