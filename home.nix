@@ -43,7 +43,7 @@
     # -- Audio and video
     (config.lib.nixGL.wrap mpv)
     qpwgraph
-    easyeffects
+    (config.lib.nixGL.wrap easyeffects)
     # --
 
     # -- Chatting platforms
