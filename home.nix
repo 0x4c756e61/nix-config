@@ -82,6 +82,7 @@
     (config.lib.nixGL.wrap pods)
     forgejo-cli.packages.${pkgs.stdenv.hostPlatform.system}.default
     nix-output-monitor
+    xh
     # --
 
     # -- System monitoring
