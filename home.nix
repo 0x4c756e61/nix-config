@@ -2,7 +2,6 @@
   nixgl,
   config,
   pkgs,
-  forgejo-cli,
   spicetify,
   moonlight,
   vicinae,
@@ -13,7 +12,7 @@ let
   custom-zen =
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta-unwrapped.overrideAttrs
       (oldAttrs: rec {
-        libName = "zen-bin-1.17.15b";
+        libName = "zen-bin-1.19.9b";
         fsautoconfig = (
           builtins.fetchurl {
             url = "https://raw.githubusercontent.com/MrOtherGuy/fx-autoconfig/master/program/config.js";
@@ -76,7 +75,7 @@ in
     (config.lib.nixGL.wrap dissent)
     (config.lib.nixGL.wrap (
       discord.override {
-        withMoonlight = true;
+        #withMoonlight = true;
         # withOpenASAR = true;
         moonlight = moonlight.packages.${pkgs.stdenv.hostPlatform.system}.moonlight;
         desktopName = "moonlight";
@@ -100,14 +99,16 @@ in
 
     # -- Gaming
     (config.lib.nixGL.wrap steam)
+    (config.lib.nixGL.wrap heroic)
     prismlauncher
     # --
 
     # -- Stuff i use for development
     (config.lib.nixGL.wrap pods)
-    forgejo-cli.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # forgejo-cli.packages.${pkgs.stdenv.hostPlatform.system}.default
     nix-output-monitor
     xh
+
     # --
 
     # -- System monitoring
@@ -117,6 +118,7 @@ in
 
     # -- extras
     (config.lib.nixGL.wrap monero-gui)
+    (config.lib.nixGL.wrap kdePackages.akregator)
     # --
 
   ];
@@ -128,6 +130,7 @@ in
       enable = true;
       autoStart = true;
     };
+    package = (config.lib.nixGL.wrap vicinae.packages.${pkgs.stdenv.hostPlatform.system}.default);
   };
 
   # Automatically set and unset environments when switching directory
@@ -140,7 +143,10 @@ in
   # Zen beta, best firefox fork
   programs.zen-browser = {
     enable = true;
-    package = (config.lib.nixGL.wrap ((pkgs.wrapFirefox) custom-zen { }));
+    package = (config.lib.nixGL.wrap ((pkgs.wrapFirefox) custom-zen {
+      icon = "zen-browser";
+      
+    }));
   };
 
   warnings = [ "Check if there was any progress regarding zen-flake support for Sine" ];
