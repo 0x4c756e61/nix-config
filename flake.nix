@@ -13,16 +13,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    forgejo-cli = {
-      url = "git+https://codeberg.org/Cyborus/forgejo-cli";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     moonlight = {
       url = "github:moonlight-mod/moonlight";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,8 +34,6 @@
       nixgl,
       nixpkgs,
       home-manager,
-      forgejo-cli,
-      spicetify-nix,
       moonlight,
       vicinae,
       zen-browser,
@@ -67,16 +55,9 @@
       homeConfigurations."luna" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
         modules = [ ./home.nix ];
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
         extraSpecialArgs = {
           nixgl = nixgl;
-          forgejo-cli = forgejo-cli;
-          spicetify = spicetify-nix;
           moonlight = moonlight;
           vicinae = vicinae;
           zen-browser = zen-browser;

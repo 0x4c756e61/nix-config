@@ -2,38 +2,11 @@
   nixgl,
   config,
   pkgs,
-  spicetify,
   moonlight,
   vicinae,
   zen-browser,
   ...
 }:
-let
-  custom-zen =
-    zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta-unwrapped.overrideAttrs
-      (oldAttrs: rec {
-        libName = "zen-bin-1.19.9b";
-        fsautoconfig = (
-          builtins.fetchurl {
-            url = "https://raw.githubusercontent.com/MrOtherGuy/fx-autoconfig/master/program/config.js";
-            sha256 = "1mx679fbc4d9x4bnqajqx5a95y1lfasvf90pbqkh9sm3ch945p40";
-          }
-        );
-        configpref = (
-          builtins.fetchurl {
-            url = "https://raw.githubusercontent.com/MrOtherGuy/fx-autoconfig/refs/heads/master/program/defaults/pref/config-prefs.js";
-            sha256 = "sha256-a/0u0TnRj/UXjg/GKjtAWFQN2+ujrckSwNae23DBfs4=";
-          }
-        );
-
-        postInstall = (oldAttrs.postInstall or "") + ''
-          chmod -R u+w "$out/lib/${libName}"
-          cp "${fsautoconfig}" "$out/lib/${libName}/config.js"
-          mkdir -p "$out/lib/${libName}/defaults/pref"
-          cp "${configpref}" "$out/lib/${libName}/defaults/pref/config-pref.js"
-        '';
-      });
-in
 {
   home.username = "luna";
   home.homeDirectory = "/home/luna";
@@ -53,102 +26,14 @@ in
   # --
 
   imports = [
-    spicetify.homeManagerModules.default
     vicinae.homeManagerModules.default
     zen-browser.homeModules.beta
-    ./dotfiles # Submodule containing all my user non-nix configurations (except for spotify lol)
+    ./dotfiles # Submodule containing all my user configurations
   ];
 
   home.packages = with pkgs; [
-    # -- Imagery
-    (config.lib.nixGL.wrap gimp3)
-    # --
-
-    # -- Audio and video
-    (config.lib.nixGL.wrap mpv)
-    qpwgraph
-    (config.lib.nixGL.wrap easyeffects)
-    # --
-
-    # -- Chatting platforms
-    (config.lib.nixGL.wrap signal-desktop)
-    (config.lib.nixGL.wrap dissent)
-    (config.lib.nixGL.wrap (
-      discord.override {
-        #withMoonlight = true;
-        # withOpenASAR = true;
-        moonlight = moonlight.packages.${pkgs.stdenv.hostPlatform.system}.moonlight;
-        desktopName = "moonlight";
-        commandLineArgs = "--ozone-platform=wayland"; # Seems to be required on non-nixOS installations? Not sure since the package already appends this if NIXOS_WAYLAND is set
-      }
-    ))
-    # --
-
     # -- NixGL wrappers I need when testing apps within a nix shell
     nixgl.packages.${pkgs.stdenv.hostPlatform.system}.nixGLIntel
     nixgl.packages.${pkgs.stdenv.hostPlatform.system}.nixVulkanIntel
-    # --
-
-    # -- Fonts
-    maple-mono.NF # Very cute and cozy font, would recommend
-    # --
-
-    # -- QT related
-    kdePackages.breeze # Necessary for prism to use the breeze theme
-    # --
-
-    # -- Gaming
-    (config.lib.nixGL.wrap steam)
-    (config.lib.nixGL.wrap heroic)
-    prismlauncher
-    # --
-
-    # -- Stuff i use for development
-    (config.lib.nixGL.wrap pods)
-    # forgejo-cli.packages.${pkgs.stdenv.hostPlatform.system}.default
-    nix-output-monitor
-    xh
-
-    # --
-
-    # -- System monitoring
-    btop-rocm
-    dysk
-    # --
-
-    # -- extras
-    (config.lib.nixGL.wrap monero-gui)
-    (config.lib.nixGL.wrap kdePackages.akregator)
-    # --
-
   ];
-
-  # Free and open source Raycast reimplementation
-  services.vicinae = {
-    enable = true;
-    systemd = {
-      enable = true;
-      autoStart = true;
-    };
-    package = (config.lib.nixGL.wrap vicinae.packages.${pkgs.stdenv.hostPlatform.system}.default);
-  };
-
-  # Automatically set and unset environments when switching directory
-  programs.direnv = {
-    enable = true;
-    enableFishIntegration = true;
-    nix-direnv.enable = true;
-  };
-
-  # Zen beta, best firefox fork
-  programs.zen-browser = {
-    enable = true;
-    package = (config.lib.nixGL.wrap ((pkgs.wrapFirefox) custom-zen {
-      icon = "zen-browser";
-      
-    }));
-  };
-
-  warnings = [ "Check if there was any progress regarding zen-flake support for Sine" ];
-
 }
