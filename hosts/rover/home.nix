@@ -28,7 +28,7 @@
   imports = [
     vicinae.homeManagerModules.default
     zen-browser.homeModules.beta
-    ./hosts/rover
+    ./dotfiles
   ];
 
   home.packages = with pkgs; [

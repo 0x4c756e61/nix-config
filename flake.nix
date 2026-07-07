@@ -55,7 +55,7 @@
       homeConfigurations."luna" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
-        modules = [ ./home.nix ];
+        modules = [ ./hosts/rover/home.nix ];
         extraSpecialArgs = {
           nixgl = nixgl;
           moonlight = moonlight;

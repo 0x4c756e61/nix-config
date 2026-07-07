@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   home.file."${config.xdg.configHome}/mpv" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/home-manager/hosts/rover/mpv/";
+    source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/home-manager/hosts/rover/dotfiles/mpv/";
     recursive = true;
   };
 

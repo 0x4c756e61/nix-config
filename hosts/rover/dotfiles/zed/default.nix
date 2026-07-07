@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   home.file."${config.xdg.configHome}/zed/" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/home-manager/hosts/rover/zed/";
+    source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/home-manager/hosts/rover/dotfiles/zed/";
     recursive = true;
   };
 
