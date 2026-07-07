@@ -20,5 +20,6 @@
     ./games.nix
     ./system.nix
     ./extra.nix
+    ./dev.nix
   ];
 }
