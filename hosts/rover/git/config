@@ -1,0 +1,33 @@
+[core]
+	whitespace = error
+	compression = 9
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true
+	side-by-side = true
+	hyperlinks = true
+
+[commit]
+	template = ~/.config/git/template
+
+[log]
+	abbrevCommit = true
+
+[push]
+	autoSetupRemote = true
+	default = current
+
+[pull]
+	rebase = true
+
+[init]
+	defaultBranch = main
+[user]
+	email = 40660493+0x4c756e61@users.noreply.github.com
+	name = Lyna
+[merge]
+	conflictstyle = zdiff3

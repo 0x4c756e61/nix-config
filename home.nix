@@ -28,7 +28,7 @@
   imports = [
     vicinae.homeManagerModules.default
     zen-browser.homeModules.beta
-    ./dotfiles # Submodule containing all my user configurations
+    ./hosts/rover
   ];
 
   home.packages = with pkgs; [
