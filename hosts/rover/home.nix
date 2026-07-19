@@ -2,11 +2,18 @@
   nixgl,
   config,
   pkgs,
+  lib,
   moonlight,
   vicinae,
   zen-browser,
   ...
 }:
+
+let
+  dots = ./dotfiles |>
+    lib.filesystem.listFilesRecursive |>
+    builtins.filter (f: lib.strings.hasSuffix ".nix" f && !lib.strings.hasInfix ".ignore" (toString f));
+in
 {
   home.username = "luna";
   home.homeDirectory = "/home/luna";
@@ -28,8 +35,7 @@
   imports = [
     vicinae.homeManagerModules.default
     zen-browser.homeModules.beta
-    ./dotfiles
-  ];
+  ] ++ dots;
 
   home.packages = with pkgs; [
     # -- NixGL wrappers I need when testing apps within a nix shell

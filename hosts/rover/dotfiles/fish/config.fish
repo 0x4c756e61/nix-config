@@ -35,7 +35,7 @@ abbr -a -g yay paru
 abbr -a -g cat bat
 abbr -a -g cd z
 
-alias ls='eza --icons'
+alias ls='eza --icons always'
 alias woman='man'
 alias hx="helix"
 alias userctl="systemctl --user"
