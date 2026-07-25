@@ -11,10 +11,8 @@ Lyna's personal dotfiles, currently only a home-manager config.
 ## Disclaimer
 Those aren't meant to be used by others as-is, and only serves as a reference.
 
---- 
-
 ## Structure
-> ![note]
+> [!note]
 > Those dotfiles are currently made to run on *non* nixOS/nixdarwin systems, and thus uses nixGL to get graphical applications working.
 
 ### flake
@@ -28,6 +26,10 @@ This is where the magic takes place, each files (or folder, refered to as *modul
 Disabling a module can simply be done by either renaming the file as `something.old` or by adding `-ignore` to the filename.
 
 ## Building
-Building can simply be achieved by running the following command `nom build ".#homeConfigurations.luna.activationPackage"` and later on activating the config with `./result/bin/home-manager-generation`
+Building can simply be achieved by running the following command: 
+
+`nom build ".#homeConfigurations.luna.activationPackage"`
+
+and later on activating the config with `./result/bin/home-manager-generation`
 
 [Estrogen-shield]: https://cloud.bitfl0wer.de/public.php/dav/files/P4LW9dawZKwJEEZ
