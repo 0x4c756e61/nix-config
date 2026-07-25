@@ -9,7 +9,7 @@
     (config.lib.nixGL.wrap dissent)
     (config.lib.nixGL.wrap (
       discord.override {
-        #withMoonlight = true;
+        withMoonlight = true;
         # withOpenASAR = true;
         moonlight = moonlight.packages.${pkgs.stdenv.hostPlatform.system}.moonlight;
         desktopName = "moonlight";
