@@ -23,7 +23,7 @@ In the future this flake will be able to support different hosts nixOS hosts, ho
 ### The dotfiles themselves
 This is where the magic takes place, each files (or folder, refered to as *modules*) in the dotfiles directory is automatically imported at evaluation time to avoid writing paths by hand. 
 
-Disabling a module can simply be done by either renaming the file as `something.old` or by adding `-ignore` to the filename.
+Disabling a module can simply be done by either renaming the file as `something.old` or by adding `.ignore` to the filename.
 
 ## Building
 Building can simply be achieved by running the following command: 
