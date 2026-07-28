@@ -27,6 +27,11 @@
       url = "github:0xc000022070/zen-browser-flake/beta";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -37,6 +42,7 @@
       moonlight,
       vicinae,
       zen-browser,
+      nur,
       ...
     }:
     let
@@ -46,6 +52,7 @@
           allowUnfree = true;
         };
         overlays = [
+          nur.overlays.default
           nixgl.overlay
         ];
       };

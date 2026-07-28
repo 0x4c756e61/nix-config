@@ -12,6 +12,7 @@
 
     qt6.qt5compat
     kdePackages.breeze # Necessary for prism to use the breeze theme
-
+    nur.repos.forkprince.twintaillauncher
+    protonup-qt
   ];
 }

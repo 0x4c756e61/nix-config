@@ -11,4 +11,6 @@
     xh
 
   ];
+  programs.helix.enable = true;
+
 }
