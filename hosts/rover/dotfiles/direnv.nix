@@ -1,4 +1,3 @@
-
 {
   # Automatically set and unset environments when switching directory
   programs.direnv = {

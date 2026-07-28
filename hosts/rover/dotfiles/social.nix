@@ -1,9 +1,9 @@
 {
   config,
   pkgs,
-  moonlight,
   ...
-}: {
+}:
+{
   home.packages = with pkgs; [
     (config.lib.nixGL.wrap signal-desktop)
     # (config.lib.nixGL.wrap dissent)

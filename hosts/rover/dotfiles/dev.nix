@@ -9,7 +9,6 @@
     (config.lib.nixGL.wrap gram)
     nix-output-monitor
     xh
-
   ];
   programs.helix.enable = true;
 
