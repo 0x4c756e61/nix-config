@@ -23,7 +23,7 @@ set -a fish_function_path ~/.config/fish/plugin-foreign-env/functions
 fenv source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
 
 # Exports
-export VISUAL="helix"
+export VISUAL="hx"
 export EDITOR="$VISUAL"
 
 # Make sure make and cmake uses 10 threads by default, instead of just one
@@ -37,7 +37,7 @@ abbr -a -g cd z
 
 alias ls='eza --icons always'
 alias woman='man'
-alias hx="helix"
+#alias hx="helix" #nixpks already exposes helix as hx
 alias userctl="systemctl --user"
 # In case sddm is broken, or if for some reason I want to start plama from the tty
 alias startw="dbus-run-session startplasma-wayland"

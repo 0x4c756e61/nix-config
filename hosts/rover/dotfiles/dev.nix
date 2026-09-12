@@ -9,6 +9,8 @@
     (config.lib.nixGL.wrap gram)
     nix-output-monitor
     xh
+
+    svelte-language-server
   ];
   programs.helix.enable = true;
 

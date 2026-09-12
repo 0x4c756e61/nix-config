@@ -13,10 +13,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    moonlight = {
-      url = "github:moonlight-mod/moonlight";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # moonlight = {
+    #   url = "github:moonlight-mod/moonlight";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     vicinae = {
       url = "github:vicinaehq/vicinae";
@@ -32,6 +32,11 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    chipass = {
+      url = "git+https://codeberg.org/ChiPass/ChiPass";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -39,10 +44,11 @@
       nixgl,
       nixpkgs,
       home-manager,
-      moonlight,
+      # moonlight,
       vicinae,
       zen-browser,
       nur,
+      chipass,
       ...
     }:
     let
@@ -65,9 +71,10 @@
         modules = [ ./hosts/rover/home.nix ];
         extraSpecialArgs = {
           nixgl = nixgl;
-          moonlight = moonlight;
+          # moonlight = moonlight;
           vicinae = vicinae;
           zen-browser = zen-browser;
+          chipass = chipass;
         };
       };
     };
